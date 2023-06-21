@@ -1,0 +1,91 @@
+<<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>책 소개 및 독후감 웹페이지</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+  <style>
+    .cover-image {
+      width: 300px;
+      height: 300px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="tree.jpg" alt="나무 이미지">
+    <h1>책 소개 및 독후감 웹페이지</h1>
+  </header>
+  
+  <main>
+    <h2>책 소개</h2>
+    <input type="text" id="book" placeholder="책 제목을 작성해주세요." style="width: 50%;">
+    <h3>작가</h3>
+    <input type="text" id="name" placeholder="작가 소개를 작성해주세요." style="width: 50%;">
+    <h3>출판사</h3>
+    <input type="text" id="chulpan" placeholder="출판사를 작성해주세요." style="width: 50%;">
+    <h3>줄거리</h3>
+    <textarea id="julgury" placeholder="줄거리(스크롤 해서 원하는 만큼 늘려주세요.)"style="width: 50%;"></textarea>
+    <h2>독후감 작성하기</h2>
+    <p id="summary"></p>
+
+    <input type="text" id="bookTitle" placeholder="책 제목" style="width: 50%;">
+    <input type="text" id="authorName" placeholder="작가 이름" style="width: 50%;">
+    <textarea id="bookSummary" placeholder="독후감(스크롤 해서 원하는 만큼 늘려주세요.)" style="width: 50%;"></textarea>
+  
+    <button onclick="saveBookInfo()">저장하기</button>
+
+    <h2>저장된 독후감</h2>
+    <h2>책 제목:</h2>
+    <p id="titleOutput"></p>
+    <h2>작가:</h2>
+    <p id="authorOutput"></p>
+    <h2>줄거리:</h2>
+    <p id="summaryOutput"></p>
+    <h2>댓글</h2>
+  <div id="commentContainer">
+    <input type="text" id="nameInput" placeholder="이름">
+    <textarea id="commentInput" placeholder="댓글을 작성해주세요."></textarea>
+    <button onclick="addComment()">댓글 작성</button>
+    <div id="commentList"></div>
+  </div>
+</main>
+
+<script>
+  function addComment() {
+    var name = document.getElementById("nameInput").value;
+    var comment = document.getElementById("commentInput").value;
+    var commentElement = document.createElement("div");
+    commentElement.innerHTML = "<strong>" + name + ":</strong> " + comment;
+    var commentList = document.getElementById("commentList");
+    commentList.appendChild(commentElement);
+
+    document.getElementById("nameInput").value = "";
+    document.getElementById("commentInput").value = "";
+  }
+</script>
+  </main>
+  
+  <footer>
+    <p>© 2023 책 소개 및 독후감 웹페이지. All rights reserved.</p>
+  </footer>
+  
+  <script>
+    function saveBookInfo() {
+      var bookTitle = document.getElementById("bookTitle").value;
+      var authorName = document.getElementById("authorName").value;
+      var bookSummary = document.getElementById("bookSummary").value;
+
+      document.getElementById("titleOutput").textContent = bookTitle;
+      document.getElementById("authorOutput").textContent = authorName;
+      document.getElementById("summaryOutput").textContent = bookSummary;
+      
+      console.log("정보가 저장되었습니다.");
+    }
+  </script>
+</body>
+</html>
